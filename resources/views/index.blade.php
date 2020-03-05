@@ -28,6 +28,7 @@
 					<div class="col-sm-12">
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</div>
+					<input type="hidden" name="recaptcha" id="recaptcha">
 				</div>
 				@include('includes.form-error')
 			</form>
@@ -36,3 +37,13 @@
 </section>
 
 @stop
+
+
+<script src="https://www.google.com/recaptcha/api.js?render=6Lem694UAAAAAP02ns7EHpQ3bv1JR-Ml80J9my2I"></script>
+<script>
+grecaptcha.ready(function() {
+    grecaptcha.execute('6Lem694UAAAAAP02ns7EHpQ3bv1JR-Ml80J9my2I', {action: '/'}).then(function(token) {
+       document.getElementById('recaptcha').value = token;
+    });
+});
+</script>

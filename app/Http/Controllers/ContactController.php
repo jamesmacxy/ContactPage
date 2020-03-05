@@ -40,6 +40,27 @@ class ContactController extends Controller
     {
 
         // dd($request->all());
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+
+        $captcha = [
+            'secret' => '6Lem694UAAAAADOpZwgmaSd8RbIuAzf488N3-qXF',
+            'response' => request('recaptcha')
+        ];
+
+        $options = [
+            'http' => [
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($captcha)
+
+            ]
+        ];
+
+        $context = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        $resultJson = json_decode($result);
+
+        if ($resultJson->success != true) return back()->with('message', 'Captcha Error');
 
         $data = $request->all();
 
