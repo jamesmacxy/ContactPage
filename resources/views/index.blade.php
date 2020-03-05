@@ -39,10 +39,10 @@
 @stop
 
 
-<script src="https://www.google.com/recaptcha/api.js?render=6Lem694UAAAAAP02ns7EHpQ3bv1JR-Ml80J9my2I"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_KEY') }}"></script>
 <script>
 grecaptcha.ready(function() {
-    grecaptcha.execute('6Lem694UAAAAAP02ns7EHpQ3bv1JR-Ml80J9my2I', {action: '/'}).then(function(token) {
+    grecaptcha.execute('{{ env('RECAPTCHA_KEY') }}', {action: '/'}).then(function(token) {
        document.getElementById('recaptcha').value = token;
     });
 });
