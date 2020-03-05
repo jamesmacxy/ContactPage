@@ -39,10 +39,10 @@
 @stop
 
 
-<script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_KEY') }}"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ RECAPTCHA_KEY }}"></script>
 <script>
 grecaptcha.ready(function() {
-    grecaptcha.execute('{{ env('RECAPTCHA_KEY') }}', {action: '/'}).then(function(token) {
+    grecaptcha.execute('{{ RECAPTCHA_KEY }}', {action: '/'}).then(function(token) {
        document.getElementById('recaptcha').value = token;
     });
 });
