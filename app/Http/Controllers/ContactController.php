@@ -50,7 +50,7 @@ class ContactController extends Controller
         //send email
         Mail::send('emails.test', $data, function($message){
 
-            $message->to('xsmacayana@globe.com.ph', 'Xy')->subject('Haznepz Inquiry');
+            $message->to('jamesmacxy@gmail.com', 'James')->subject('Haznepz Inquiry');
         });
  
         return redirect()->back();
